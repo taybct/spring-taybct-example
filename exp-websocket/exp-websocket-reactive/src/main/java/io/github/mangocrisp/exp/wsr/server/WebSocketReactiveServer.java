@@ -2,12 +2,12 @@ package io.github.mangocrisp.exp.wsr.server;
 
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.convert.Convert;
-import io.github.mangocrisp.spring.taybct.tool.core.annotation.ServerReactiveEndpoint;
-import io.github.mangocrisp.spring.taybct.tool.core.websocket.endpoint.AbstractWebSocketReactiveServer;
-import io.github.mangocrisp.spring.taybct.tool.core.websocket.enums.MessageUserType;
-import io.github.mangocrisp.spring.taybct.tool.core.websocket.support.MessageUser;
-import io.github.mangocrisp.spring.taybct.tool.core.websocket.support.WSR;
-import io.github.mangocrisp.spring.taybct.tool.core.websocket.support.WebsocketReactiveSession;
+import io.github.taybct.tool.core.annotation.ServerReactiveEndpoint;
+import io.github.taybct.tool.core.websocket.endpoint.AbstractWebSocketReactiveServer;
+import io.github.taybct.tool.core.websocket.enums.MessageUserType;
+import io.github.taybct.tool.core.websocket.support.MessageUser;
+import io.github.taybct.tool.core.websocket.support.WSR;
+import io.github.taybct.tool.core.websocket.support.WebsocketReactiveSession;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 
 import java.util.List;

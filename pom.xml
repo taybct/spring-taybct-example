@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.mangocrisp</groupId>
+    <groupId>io.github.taybct</groupId>
     <artifactId>spring-taybct-example</artifactId>
-    <version>3.5.0-beta.1</version>
+    <version>3.5.0</version>
     <name>Spring TayBct Example</name>
     <description>Spring TayBct Example</description>
     <packaging>pom</packaging>
@@ -29,7 +29,7 @@
         <!--spring boot 版本依赖-->
         <spring-boot.version>3.5.6</spring-boot.version>
         <!--工具版本-->
-        <spring-taybct-tools.version>3.5.0-beta.1</spring-taybct-tools.version>
+        <spring-taybct-tools.version>3.5.0</spring-taybct-tools.version>
     </properties>
 
     <!-- 依赖声明 -->
@@ -37,7 +37,7 @@
         <dependencies>
 
             <dependency>
-                <groupId>io.github.mangocrisp</groupId>
+                <groupId>io.github.taybct</groupId>
                 <artifactId>spring-taybct-tools-dependencies</artifactId>
                 <version>${spring-taybct-tools.version}</version>
                 <type>pom</type>
@@ -184,7 +184,6 @@
                     <includeTransitiveDependencies>true</includeTransitiveDependencies>
                     <!-- 排除无需声明的依赖（可选） -->
                     <excludedGroups>com.yourcompany.internal</excludedGroups>
-                    <includeOrganization>true</includeOrganization>
                 </configuration>
                 <executions>
                     <execution>

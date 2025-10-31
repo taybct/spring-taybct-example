@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>io.github.mangocrisp</groupId>
+        <groupId>io.github.taybct</groupId>
         <artifactId>exp-websocket</artifactId>
-        <version>3.5.0-beta.1</version>
+        <version>3.5.0</version>
     </parent>
 
     <artifactId>exp-websocket-mvc</artifactId>
@@ -41,13 +41,13 @@
 
         <!--启动模块-->
         <dependency>
-            <groupId>io.github.mangocrisp</groupId>
+            <groupId>io.github.taybct</groupId>
             <artifactId>spring-taybct-tool-launch</artifactId>
         </dependency>
 
         <!--核心模块-->
         <dependency>
-            <groupId>io.github.mangocrisp</groupId>
+            <groupId>io.github.taybct</groupId>
             <artifactId>spring-taybct-tool-core</artifactId>
         </dependency>
 
