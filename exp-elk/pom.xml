@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.taybct</groupId>
-        <artifactId>exp-websocket</artifactId>
+        <artifactId>spring-taybct-example</artifactId>
         <version>3.5.1.1</version>
     </parent>
 
-    <artifactId>exp-websocket-mvc</artifactId>
+    <artifactId>exp-elk</artifactId>
     <name>${project.artifactId}</name>
     <packaging>jar</packaging>
-    <description>websocket mvc example</description>
+    <description>elasticsearch 搜索引擎</description>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -23,10 +23,28 @@
 
     <dependencies>
 
-        <!-- mvc -->
+        <!--启动模块-->
+        <dependency>
+            <groupId>io.github.taybct</groupId>
+            <artifactId>spring-taybct-tool-launch</artifactId>
+        </dependency>
+        <!--微服务依赖-->
+        <dependency>
+            <groupId>io.github.taybct</groupId>
+            <artifactId>spring-taybct-tool-cloud</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.taybct</groupId>
+            <artifactId>spring-taybct-tool-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!--spring web-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
@@ -37,40 +55,16 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-undertow</artifactId>
+            <version>${spring-boot.version}</version>
         </dependency>
 
-        <!--启动模块-->
-        <dependency>
-            <groupId>io.github.taybct</groupId>
-            <artifactId>spring-taybct-tool-launch</artifactId>
-        </dependency>
-
-        <!--核心模块-->
-        <dependency>
-            <groupId>io.github.taybct</groupId>
-            <artifactId>spring-taybct-tool-core</artifactId>
-        </dependency>
-
-        <!--mvc websocket-->
+        <!--es 操作-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-websocket</artifactId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+            <version>${spring-boot.version}</version>
         </dependency>
 
     </dependencies>
-
-    <build>
-        <plugins>
-            <!--设置该模块及子模块不需要被打包成jar-->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                    <finalName>${project.name}</finalName>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

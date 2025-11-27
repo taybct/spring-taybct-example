@@ -1,0 +1,10 @@
+# Server
+server:
+  port: 7105
+dubbo:
+  protocol:
+    # 固定 Dubbo 端口
+    port: 27105
+  application:
+    # Dubbo的在线运维命令端口
+    qos-port: 37105

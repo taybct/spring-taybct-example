@@ -1,0 +1,10 @@
+# Server
+server:
+  port: 17104
+dubbo:
+  protocol:
+    # 固定 Dubbo 端口
+    port: 47104
+  application:
+    # Dubbo的在线运维命令端口
+    qos-port: 57104

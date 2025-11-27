@@ -4,175 +4,28 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>io.github.taybct</groupId>
+        <artifactId>spring-taybct-example</artifactId>
+        <version>3.5.1.1</version>
+    </parent>
+
     <groupId>io.github.taybct</groupId>
     <artifactId>exp-websocket</artifactId>
-    <version>3.5.0</version>
+    <version>3.5.1.1</version>
     <name>Spring TayBct Example Websocket</name>
     <description>Spring TayBct Example Websocket</description>
     <packaging>pom</packaging>
 
     <properties>
-        <!-- Collection 增强Java集合框架 -->
-        <commons-collections4.version>4.4</commons-collections4.version>
-        <!--jdk 版本-->
-        <java.version>21</java.version>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <maven.compiler.release>21</maven.compiler.release>
-        <!--maven 打包工具，可以把各个模块打的包移动到同一个 target 文件夹下面方便部署-->
-        <maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
-        <!--maven 插件-->
-        <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
-        <!--maven 源码插件-->
-        <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!--spring boot 版本依赖-->
-        <spring-boot.version>3.5.6</spring-boot.version>
-        <!--工具版本-->
-        <spring-taybct-tools.version>3.5.0</spring-taybct-tools.version>
     </properties>
-
-    <!-- 依赖声明 -->
-    <dependencyManagement>
-        <dependencies>
-
-            <dependency>
-                <groupId>io.github.taybct</groupId>
-                <artifactId>spring-taybct-tools-dependencies</artifactId>
-                <version>${spring-taybct-tools.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-        </dependencies>
-    </dependencyManagement>
-
-    <dependencies>
-
-        <!--配置文件处理器的依赖-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <!-- lombok getter setter slf4j -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <!--java 工具类库-->
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-        </dependency>
-        <!--自动生成 spring.factories 配置-->
-        <dependency>
-            <groupId>net.dreamlu</groupId>
-            <artifactId>mica-auto</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-    </dependencies>
 
     <modules>
         <module>exp-websocket-mvc</module>
         <module>exp-websocket-reactive</module>
     </modules>
-
-    <build>
-        <finalName>${project.artifactId}-${project.version}</finalName>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.xml</include>
-                </includes>
-            </resource>
-        </resources>
-        <!--设置子项目不需要指定maven插件版本-->
-        <pluginManagement>
-            <plugins>
-                <!--spring boot 打包插件-->
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>${spring-boot.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven-compiler-plugin.version}</version>
-                </plugin>
-                <!--打包源码插件-->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-source-plugin</artifactId>
-                    <version>${maven-source-plugin.version}</version>
-                </plugin>
-                <!--maven 打包工具-->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-antrun-plugin</artifactId>
-                    <version>${maven-antrun-plugin.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-        <plugins>
-            <!--spring boot 打包插件-->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <finalName>${project.build.finalName}</finalName>
-                    <!-- spring-boot:run 中文乱码解决 -->
-                    <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
-                    <!--打包本地 jar 包到-->
-                    <includeSystemScope>true</includeSystemScope>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <!-- 指定maven编译的jdk版本,如果不指定,maven3默认用jdk 1.5 maven2默认用jdk1.3 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <!-- 一般而言，target与source是保持一致的，但是，有时候为了让程序能在其他版本的jdk中运行(对于低版本目标jdk
-                    ，源代码中不能使用低版本jdk中不支持的语法)，会存在target不同于source的情况 -->
-                    <!-- 源代码使用的JDK版本 -->
-                    <source>${java.version}</source>
-                    <!-- 需要生成的目标class文件的编译版本 -->
-                    <target>${java.version}</target>
-                    <!-- 字符集编码 -->
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                    <showWarnings>true</showWarnings>
-                    <compilerArgs>
-                        <arg>-parameters</arg>
-                    </compilerArgs>
-                </configuration>
-            </plugin>
-            <!--打包源码插件-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 </project>

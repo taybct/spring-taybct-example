@@ -2,26 +2,43 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.taybct</groupId>
         <artifactId>spring-taybct-example</artifactId>
         <version>3.5.1.1</version>
     </parent>
+    <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>exp-test</artifactId>
+    <artifactId>exp-flux</artifactId>
+    <name>${project.artifactId}</name>
+    <description>模拟 webflux 模块</description>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
+
+        <!--启动模块-->
+        <dependency>
+            <groupId>io.github.taybct</groupId>
+            <artifactId>spring-taybct-tool-launch</artifactId>
+        </dependency>
+
+        <!--核心模块-->
         <dependency>
             <groupId>io.github.taybct</groupId>
             <artifactId>spring-taybct-tool-core</artifactId>
-            <version>3.5.1.1</version>
+        </dependency>
+
+        <!-- webflux -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+            <version>${spring-boot.version}</version>
         </dependency>
     </dependencies>
 

@@ -1,0 +1,58 @@
+# 服务器配置
+server:
+  port: 7004
+logging:
+  level:
+    root: info
+spring:
+  profiles:
+    active: dev
+  application:
+    name: lab-kafka-provider
+  kafka:
+    # 集群地址（多个用逗号分隔）
+    bootstrap-servers: 172.29.230.146:9092
+    # 通用配置（生产者和消费者共享）
+    properties:
+      # SASL认证配置
+      sasl:
+        mechanism: PLAIN
+        jaas:
+          config: org.apache.kafka.common.security.plain.PlainLoginModule required username="admin" password="admin-secret";
+      security:
+        protocol: SASL_PLAINTEXT  # 如果需要SSL加密可改为SASL_SSL
+    producer:
+      # 键序列化
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      # 序列化
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      #value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      # 重试次数
+      retries: 3
+      # 批量大小
+      batch-size: 16384
+      #  确认级别，确保消息可靠投递
+      acks: all
+    consumer:
+      # 序列化
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      # 反序列化
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      #value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      # 自动重置偏移量
+      auto-offset-reset: earliest
+      # 手动提交偏移量
+      enable-auto-commit: false
+      # 消费者组
+      group-id: lab-kafka-consumer
+      properties:
+        # 允许反序列化任意包
+        spring.json.trusted.packages: "*"
+    # 监听器配置
+    listener:
+      # 手动提交模式（二选一）
+      # MANUAL：调用ack.acknowledge()后，批量提交
+      # MANUAL_IMMEDIATE：调用ack.acknowledge()后立即提交
+      ack-mode: MANUAL_IMMEDIATE  # 建议用这个，即时提交
+      # 消费线程数
+      concurrency: 3

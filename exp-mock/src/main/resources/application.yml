@@ -1,0 +1,11 @@
+# 服务器配置
+server:
+  port: 7001
+logging:
+  level:
+    root: debug
+spring:
+  profiles:
+    active: dev
+  application:
+    name: lab-mock
