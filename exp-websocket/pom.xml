@@ -7,12 +7,12 @@
     <parent>
         <groupId>io.github.taybct</groupId>
         <artifactId>spring-taybct-example</artifactId>
-        <version>3.5.1.1</version>
+        <version>3.5.2</version>
     </parent>
 
     <groupId>io.github.taybct</groupId>
     <artifactId>exp-websocket</artifactId>
-    <version>3.5.1.1</version>
+    <version>3.5.2</version>
     <name>Spring TayBct Example Websocket</name>
     <description>Spring TayBct Example Websocket</description>
     <packaging>pom</packaging>

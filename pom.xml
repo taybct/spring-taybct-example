@@ -6,7 +6,7 @@
 
     <groupId>io.github.taybct</groupId>
     <artifactId>spring-taybct-example</artifactId>
-    <version>3.5.1.1</version>
+    <version>3.5.2</version>
     <name>Spring TayBct Example</name>
     <description>Spring TayBct Example</description>
     <packaging>pom</packaging>
@@ -29,7 +29,7 @@
         <!--spring boot 版本依赖-->
         <spring-boot.version>3.5.6</spring-boot.version>
         <!--工具版本-->
-        <spring-taybct-tools.version>3.5.1.1</spring-taybct-tools.version>
+        <spring-taybct-tools.version>3.5.2</spring-taybct-tools.version>
     </properties>
 
     <!-- 依赖声明 -->
